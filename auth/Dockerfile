@@ -1,11 +1,8 @@
-FROM node:22.15.0-alpine3.20
+FROM node:alpine
 
-WORKDIR /usr/auth
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
 
-COPY package*.json .
-
-RUN npm i
-
-COPY ./ ./
-
-CMD [ "npm","start" ]
+CMD ["npm", "start"]
